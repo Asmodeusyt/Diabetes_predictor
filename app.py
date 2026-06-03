@@ -3,7 +3,10 @@ import pandas as pd
 import pickle
 
 # Load model
-model = pickle.load(open("diabetes_model.pkl", "rb"))
+ model = pickle.load(open("diabetes_model.pkl","rb"))
+    st.success("Model Loaded Successfully")
+except Exception as e:
+    st.error(str(e))
 
 st.title("Diabetes Prediction App")
 
