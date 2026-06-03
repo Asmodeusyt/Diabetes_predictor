@@ -2,11 +2,13 @@ import streamlit as st
 import pandas as pd
 import pickle
 
-# Load model
- model = pickle.load(open("diabetes_model.pkl","rb"))
+# Load model safely
+try:
+    model = pickle.load(open("diabetes_model.pkl", "rb"))
     st.success("Model Loaded Successfully")
 except Exception as e:
-    st.error(str(e))
+    st.error(f"Error loading model: {e}")
+    st.stop()
 
 st.title("Diabetes Prediction App")
 
